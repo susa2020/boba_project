@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--注意 android:shape="oval"属性-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval"
+    android:useLevel="false">
+    //外框寬度及顏色
+    <stroke
+        android:width="2dip"
+        android:color="#ffffff" />
+    //圓圈大小
+    <size android:width="90dp"
+        android:height="90dp"/>
+    //按鈕背景顏色
+    <solid android:color="#635D54"/>
+    //四邊留白
+    <padding android:left="10dp" android:top="10dp" android:right="10dp" android:bottom="10dp" />
+</shape>
