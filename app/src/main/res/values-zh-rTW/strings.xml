@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Boba</string>
+    <string name="add_Bubble_Button">增加按鈕</string>
+    <string name="add_bubble_button">增加按鈕</string>
+    <string name="edit_Button">編輯按鈕</string>
+    <string name="more_button">更多按鈕</string>
 </resources>
