@@ -8,8 +8,8 @@
         android:width="2dip"
         android:color="#ffffff" />
     //圓圈大小
-    <size android:width="90dp"
-        android:height="90dp"/>
+    <size android:width="80dp"
+        android:height="80dp"/>
     //按鈕背景顏色
     <solid android:color="#635D54"/>
     //四邊留白
