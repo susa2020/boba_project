@@ -89,7 +89,6 @@ public class MainActivity extends AppCompatActivity {
         Toast toast = Toast.makeText(this, "更多按鈕已經被點擊", Toast.LENGTH_SHORT);
         toast.show();
     }
-\
 
 
 }
