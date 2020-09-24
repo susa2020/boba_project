@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Boba</string>
     <string name="enter_memo">Enter your Memo</string>
+    <string name="new_memo">New MEMO</string>
+    <string name="edit_memo">Edit Memo</string>
+    <string name="finished_text">Finished:</string>
 </resources>
