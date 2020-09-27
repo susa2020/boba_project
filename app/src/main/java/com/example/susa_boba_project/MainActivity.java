@@ -2,6 +2,7 @@ package com.example.susa_boba_project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -66,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
             cursor.moveToPosition(position);
             return cursor.getInt(0);
         }
+        @SuppressLint("ViewHolder")
         @Override
         public View getView(int position, View view, ViewGroup viewGroup){
             View getview = view;
