@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">Boba</string>
+    <string name="add_Bubble_Button">add Bubble Button</string>
+    <string name="edit_Button">edit Button</string>
+    <string name="more_button">more button</string>
     <string name="enter_memo">Enter your Memo</string>
     <string name="new_memo">New MEMO</string>
     <string name="edit_memo">Edit Memo</string>
     <string name="finished_text">Finished:</string>
+    <string name="unfinished">Unfinished:</string>
 </resources>

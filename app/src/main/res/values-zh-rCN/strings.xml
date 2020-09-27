@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">Boba</string>
     <string name="add_Bubble_Button">增加按鈕</string>
-    <string name="add_bubble_button">增加按鈕</string>
     <string name="edit_Button">編輯按鈕</string>
     <string name="more_button">更多按鈕</string>
-    <string name="enter_memo">Enter your Memo</string>
-    <string name="new_memo">New MEMO</string>
-    <string name="edit_memo">Edit Memo</string>
-    <string name="finished_text">Finished:</string>
+    <string name="enter_memo">輸入Memo</string>
+    <string name="new_memo">新增Meno</string>
+    <string name="edit_memo">編輯Memo</string>
+    <string name="finished_text">完成:</string>
+    <string name="unfinished">未完成:</string>
 </resources>
