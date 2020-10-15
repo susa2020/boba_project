@@ -4,23 +4,21 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
+//import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
+public class bubbles_recyclerview_adapter extends RecyclerView.Adapter<bubbles_recyclerview_adapter.ViewHolder> {
 
     private Context mContext;
-    private ArrayList<Post> mData;
+    private ArrayList<Memo> mData;
 
-    public MyAdapter(Context context, ArrayList<Post> data) {
+    public bubbles_recyclerview_adapter(Context context, ArrayList<Memo> data) {
         this.mContext = context;
         this.mData = data;
     }
@@ -30,25 +28,19 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                                          int viewType) {
         View view = LayoutInflater
                 .from(mContext)
-                .inflate(R.layout.cell_post, parent, false);
+                .inflate(R.layout.bubbles, parent, false);
         ViewHolder holder = new ViewHolder(view);
-        holder.ivPosterThumbnail = (ImageView) view.findViewById(R.id.ivPosterThumbnail);
-        holder.tvPosterName = (TextView) view.findViewById(R.id.tvPosterName);
-        holder.tvContent = (TextView) view.findViewById(R.id.tvContent);
-        holder.btnLike = (ImageButton) view.findViewById(R.id.btnLike);
-        holder.btnComment = (ImageButton) view.findViewById(R.id.btnComment);
+        holder.tvMemoContent = (TextView) view.findViewById(R.id.memo_content);
+
 
         return holder;
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Post post = mData.get(position);
-        holder.tvPosterName.setText(post.posterName);
-        holder.tvContent.setText(post.content);
-        Glide.with(mContext)
-                .load(post.posterThumbnailUrl)
-                .into(holder.ivPosterThumbnail);
+        Memo post = mData.get(position);
+        holder.tvMemoContent.setText(post.memoContent);
+
     }
 
     @Override
@@ -58,11 +50,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        public ImageView ivPosterThumbnail;
-        public TextView tvPosterName;
-        public TextView tvContent;
-        public ImageButton btnLike;
-        public ImageButton btnComment;
+        public TextView tvMemoContent;
+
 
         public ViewHolder(View itemView) {
             super(itemView);

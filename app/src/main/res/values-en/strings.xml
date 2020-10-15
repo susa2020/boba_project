@@ -8,4 +8,6 @@
     <string name="edit_memo">Edit Memo</string>
     <string name="finished_text">Finished:</string>
     <string name="unfinished">Unfinished:</string>
+    <string name="memo">Memo</string>
+    <string name="add_bubble_button">add</string>
 </resources>

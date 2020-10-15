@@ -9,37 +9,24 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:background="@drawable/corners_bg_bottom_and_top">
 
-        <ImageView android:id="@+id/ivPosterThumbnail"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="@color/cardview_light_background"
-            android:scaleType="centerCrop"/>
 
-        <TextView android:id="@+id/tvPosterName"
+        <TextView android:id="@+id/memo_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:text="Poster Name"
+            android:layout_margin="2dp"
+            android:text="@string/memo"
             android:textSize="22sp"
             android:textColor="@color/black"/>
     </LinearLayout>
 
-    <TextView android:id="@+id/tvContent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:maxLines="5"
-        android:ellipsize="end"
-        android:text="Content example"
-        android:textColor="@color/black"
-        android:textSize="17sp"/>
+
 
 
 

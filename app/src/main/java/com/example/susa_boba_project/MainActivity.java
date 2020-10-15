@@ -1,22 +1,21 @@
 package com.example.susa_boba_project;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.database.Cursor;
-import android.database.SQLException;
-import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Canvas;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.material.textfield.TextInputEditText;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     //進度:資料庫架好功能尚未完成沒意外會報錯
@@ -36,7 +35,24 @@ public class MainActivity extends AppCompatActivity {
         db.open();
         cursor = db.select_all();
         UpdateListView(cursor);
+
+        //recrclerview start
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.bubbles_recyclerView);
+
+        ArrayList<Memo> data = new ArrayList<>();
+        data.add(new Memo("Marshmallow"));//test
+        data.add(new Memo("Lollipop"));//test
+
+        bubbles_recyclerview_adapter adapter = new bubbles_recyclerview_adapter(this, data);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
+        //recyclerview end
     }
+
     private void findViews(){
         //建立lisener
         //類別偵聽氣
@@ -44,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         //onClicker未完成
     }
     public void UpdateListView(Cursor memocursor){
-        MyAdapter adapter = new MyAdapter(memocursor);
+        bubbles_recyclerview_adapter adapter = new bubbles_recyclerview_adapter(memocursor);
         adapter.notifyDataSetChanged();
         lstView.setAdapter(adapter);
         cursor = memocursor;

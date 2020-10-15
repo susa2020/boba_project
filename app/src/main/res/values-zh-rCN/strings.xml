@@ -8,4 +8,6 @@
     <string name="edit_memo">編輯Memo</string>
     <string name="finished_text">完成:</string>
     <string name="unfinished">未完成:</string>
+    <string name="memo">Memo</string>
+    <string name="add_bubble_button">add</string>
 </resources>
