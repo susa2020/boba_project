@@ -24,6 +24,7 @@ public class bubbles_recyclerview_adapter extends RecyclerView.Adapter<bubbles_r
     }
 
     @Override
+
     public ViewHolder onCreateViewHolder(ViewGroup parent,
                                          int viewType) {
         View view = LayoutInflater
@@ -50,6 +51,7 @@ public class bubbles_recyclerview_adapter extends RecyclerView.Adapter<bubbles_r
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
+        //tvMemoContent text view Memo content
         public TextView tvMemoContent;
 
 

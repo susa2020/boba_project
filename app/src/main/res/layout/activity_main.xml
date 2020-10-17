@@ -8,41 +8,49 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-       <RelativeLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:orientation="vertical"
+        android:layout_weight="1"
+        android:orientation="horizontal"
         android:background="@drawable/corners_bg_bottom">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/unfinished"
-            android:text="@string/unfinished"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="40dp"
-            />
-
-        <TextView
-            android:id="@+id/finished_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:text="@string/finished_text"
-            android:textSize="15pt"
-            android:textStyle="bold"
-
-            />
-
         <ImageButton
             android:id="@+id/moreButton"
-            android:layout_width ="65dp"
-            android:layout_height ="65dp"
-            android:layout_alignParentEnd ="true"
-            android:layout_alignParentTop ="true"
-            android:layout_centerVertical ="true"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_alignEnd="@id/status"
             android:background="@drawable/more_button"
             android:contentDescription="@string/more_button"
             android:onClick="more_clicked" />
+
+        <LinearLayout
+            android:id="@+id/status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/finished_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/finished_text"
+                android:textSize="15pt"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/unfinished"
+                android:text="@string/unfinished"
+                android:layout_marginStart="10dp"
+                />
+        </LinearLayout>
+
+
+
 
 
     </RelativeLayout>
@@ -51,6 +59,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="470dp"
+        android:layout_weight="10"
         android:orientation="vertical">
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/bubbles_recyclerView"
@@ -63,8 +72,10 @@
         android:id="@+id/addBubbleButton"
         android:layout_width="400dp"
         android:layout_height="70dp"
+        android:layout_weight="1"
         android:layout_marginTop="5dp"
         android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/darkbrown_background"
         android:elevation="8dp"
         android:contentDescription="@string/add_bubble_button"

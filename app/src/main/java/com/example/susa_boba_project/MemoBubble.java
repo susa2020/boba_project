@@ -35,11 +35,12 @@ public class MemoBubble{
         db.execSQL(delete_text);
     }
 
+    /*這裡有錯 測試需要 暫時註解
     public Cursor select(long id){
-        String select_text = "SELECT * FROM "+TABLE_NAME+" WHERE "+_ID+"="+id;
+        String select_text = "SELECT * FROM " + TABLE_NAME + " WHERE " + _ID + "=" + id;
         Cursor cursor=db.rawQuery(select_text);
         return cursor;
-    }
+    }*/
     public Cursor select_all(){
         String select_text="SELECT * FROM "+TABLE_NAME;
         Cursor cursor = db.rawQuery(select_text,null);

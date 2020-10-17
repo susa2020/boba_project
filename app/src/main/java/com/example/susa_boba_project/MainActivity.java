@@ -1,11 +1,8 @@
 package com.example.susa_boba_project;
 
-import android.annotation.SuppressLint;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -21,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     //進度:資料庫架好功能尚未完成沒意外會報錯
    private final static String _ID = "_id";
    private final static String MEMO_CONTENT = "memo_content";
-   private LastView lstView;
+   //private LastView lstView;
    private Button btnappend,btnUpdate,btnSelect;
    private TextInputEditText edtId,edtContent;
    private MemoBubble db = new MemoBubble(MainActivity.this);
@@ -34,10 +31,9 @@ public class MainActivity extends AppCompatActivity {
         db = new MemoBubble(MainActivity.this);
         db.open();
         cursor = db.select_all();
-        UpdateListView(cursor);
+       // UpdateListView(cursor);
 
         //recrclerview start
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.bubbles_recyclerView);
@@ -59,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         //onItemLongClick未完成
         //onClicker未完成
     }
-    public void UpdateListView(Cursor memocursor){
+   /* public void UpdateListView(Cursor memocursor){
         bubbles_recyclerview_adapter adapter = new bubbles_recyclerview_adapter(memocursor);
         adapter.notifyDataSetChanged();
         lstView.setAdapter(adapter);
@@ -93,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
             return getview;
         }
 
-    }
+    }*/
     public void add_bubble_clicked(View view) {
         Toast toast = Toast.makeText(this, "新增按鈕已經被點擊", Toast.LENGTH_SHORT);
         toast.show();
