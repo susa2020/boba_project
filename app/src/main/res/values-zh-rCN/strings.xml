@@ -10,4 +10,5 @@
     <string name="unfinished">未完成:</string>
     <string name="memo">Memo</string>
     <string name="add_bubble_button">add</string>
+    <string name="settings">Settings</string>
 </resources>

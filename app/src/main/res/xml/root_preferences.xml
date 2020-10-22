@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <PreferenceCategory>
+        <PreferenceScreen
+            android:title="About">
+            <intent android:action="android.intent.action.VIEW"
+                android:data="http://www.google.com" />
+        </PreferenceScreen>
+
+        <PreferenceScreen
+            android:key="screen_preference"
+            android:title="Language"
+            >
+            <ListPreference
+                android:key="app_language"
+                android:defaultValue="zh-tw"
+                android:title="Language" />
+            <SwitchPreference
+                android:key="notification"
+                android:defaultValue="true"
+                android:title="Notification"/>
+            <!-- You can place more preferences here that will be shown on the next screen. -->
+
+        </PreferenceScreen>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
