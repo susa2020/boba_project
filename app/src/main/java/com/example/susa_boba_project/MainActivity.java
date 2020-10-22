@@ -1,5 +1,6 @@
 package com.example.susa_boba_project;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -102,6 +103,9 @@ public class MainActivity extends AppCompatActivity {
     public void more_clicked(View view) {
         Toast toast = Toast.makeText(this, "更多按鈕已經被點擊", Toast.LENGTH_SHORT);
         toast.show();
+        Intent it = new Intent(this, SettingsActivity.class); //creat intent and set the activity
+        startActivity(it); // go to second activity
+
     }
 
 

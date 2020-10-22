@@ -11,11 +11,12 @@
         <Button
             android:layout_width="50sp"
             android:layout_height="wrap_content"
-            android:text="@string/BackButton"
-            android:textSize="40sp"
             android:layout_marginTop="20dp"
             android:background="#00000000"
-            android:textStyle="bold"/>
+            android:onClick="goToMainActivity"
+            android:text="@string/BackButton"
+            android:textSize="40sp"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -24,7 +25,7 @@
             android:textSize="45sp"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="20dp">
         </TextView>
     </LinearLayout>

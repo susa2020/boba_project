@@ -5,7 +5,7 @@
 
     <PreferenceCategory>
         <PreferenceScreen
-            android:title="About">
+            android:title="Notification">
             <intent android:action="android.intent.action.VIEW"
                 android:data="http://www.google.com" />
         </PreferenceScreen>
