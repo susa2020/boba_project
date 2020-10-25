@@ -15,8 +15,8 @@
             android:title="Language"
             >
             <ListPreference
+                android:defaultValue="false"
                 android:key="app_language"
-                android:defaultValue="zh-tw"
                 android:title="Language" />
             <SwitchPreference
                 android:key="notification"

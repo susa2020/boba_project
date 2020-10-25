@@ -26,9 +26,9 @@ public class MemoBubble{
         }
     }
 
-    public void append(String contentmemo){
+    public void append(Memo contentmemo){
         String insert_text="INSERT INTO"+TABLE_NAME+"( "+MEMO_CONTENT+") values ("+contentmemo+")";
-        db.execSQL(insert_text);
+        db.execSQL(insert_text);//有問題
     }
     public void delete(long id){
         String delete_text = "DELETE FROM "+TABLE_NAME+" WHERE "+_ID+"="+id;

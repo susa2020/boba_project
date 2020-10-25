@@ -94,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
     public void add_bubble_clicked(View view) {
         Toast toast = Toast.makeText(this, "新增按鈕已經被點擊", Toast.LENGTH_SHORT);
         toast.show();
+        db.append(new Memo("add"));//test
 
     }
     public void edit_button_clicked(View view) {
