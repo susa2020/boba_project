@@ -1,22 +1,11 @@
 package com.example.susa_boba_project;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
 import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.database.SQLException;
-import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Canvas;
 import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.content.Intent;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class addThingPage extends AppCompatActivity {
     private Button memo_added_button;
@@ -27,10 +16,10 @@ public class addThingPage extends AppCompatActivity {
         super.onCreate( saveInstanceState );
         setContentView( R.layout.pop_up_memo_added );
         type_memo = ( EditText )findViewById( R.id.type_memo );
-        memo_added_button = ( Button )findViewById( R.id.memo_added_button );
-        memo_added_button.setOnClickListener( addThingToTheList );
+       // memo_added_button = ( Button )findViewById( R.id.memo_added_button );
+       // memo_added_button.setOnClickListener( addThingToTheList );
     }
-    private Button.OnClickListener addThingToTheList =
+  /*  private Button.OnClickListener addThingToTheList =
             new Button.OnClickListener(){
             @Override
                 public void Onclick( View v ){
@@ -50,5 +39,5 @@ public class addThingPage extends AppCompatActivity {
                         startActivity( intent );
                     }
                 }
-            };
+            };*/
 }

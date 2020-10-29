@@ -1,6 +1,10 @@
 package com.example.susa_boba_project;
 
-import android.content.Context;
+
+
+
+
+/*import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -41,9 +45,9 @@ public class MemoBubble{
         Cursor cursor=db.rawQuery(select_text);
         return cursor;
     }*/
-    public Cursor select_all(){
+    /*public Cursor select_all(){
         String select_text="SELECT * FROM "+TABLE_NAME;
         Cursor cursor = db.rawQuery(select_text,null);
         return cursor;
     }
-}
+}*/

@@ -1,49 +1,83 @@
 package com.example.susa_boba_project;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.database.SQLException;
-import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Canvas;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
-import android.content.Intent;
 
-import com.google.android.material.textfield.TextInputEditText;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.susa_boba_project.memo_database.DataBase;
+import com.example.susa_boba_project.memo_database.MyData;
+import com.facebook.stetho.Stetho;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     //進度:資料庫架好功能尚未完成沒意外會報錯
-   private final static String _ID = "_id";
-   private final static String MEMO_CONTENT = "memo_content";
-   private LastView lstView;
-   private Button btnappend,btnUpdate,btnSelect,addBuddleButton;
-   private TextInputEditText edtId,edtContent;
-   private MemoBubble db = new MemoBubble(MainActivity.this);
-   private Cursor cursor;
-   boolean addBuddleButtonHasBeenClicked = false;
+    bubbles_recyclerview_adapter myAdapter;
+    MyData nowSelectedData;//取得在畫面上顯示中的資料內容
+    private Cursor cursor;
+    boolean addBuddleButtonHasBeenClicked = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        findViews();
+        Stetho.initializeWithDefaults(this);//設置資料庫監視
+
+        ImageButton btnAdd = findViewById(R.id.addBubbleButton);
+        Button btModify = findViewById(R.id.button_Modify);
+        Button btClear = findViewById(R.id.button_Clear);
+        EditText edMemo = findViewById(R.id.type_memo);
+        //EditText edElseInfo = findViewById(R.id.editText_else);
+        RecyclerView recyclerView = findViewById(R.id.bubbles_recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));//設置分隔線
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));//設置分隔線
+        //setRecyclerFunction(recyclerView);//設置RecyclerView左滑刪除
+
+
+        /*findViews();
         db = new MemoBubble(MainActivity.this);
         db.open();
         cursor = db.select_all();
-        UpdateListView(cursor);
-        addBuddleButton = ( Botton )findViewById( R.id.addBubbleButton );
+        UpdateListView(cursor);*/
+
+        /**初始化RecyclerView*/
+        new Thread(() -> {
+            List<MyData> data = DataBase.getInstance(this).getDataUao().displayAll();
+            myAdapter = new bubbles_recyclerview_adapter(this, data);
+            runOnUiThread(() -> {
+                recyclerView.setAdapter(myAdapter);
+                /**===============================================================================*/
+                myAdapter.setOnItemClickListener(new bubbles_recyclerview_adapter.OnItemClickListener() {//原本的樣貌
+                    @Override
+                    public void onItemClick(MyData myData) {}
+                });
+                /**===============================================================================*/
+                /**取得被選中的資料，並顯示於畫面*/
+                myAdapter.setOnItemClickListener((myData)-> {//匿名函式(原貌在上方)
+                    nowSelectedData = myData;
+                    edMemo.setText(myData.getName());
+                    //edElseInfo.setText(myData.getElseInfo());
+                });
+                /**===============================================================================*/
+            });
+        }).start();
+        /**=======================================================================================*/
+
     }
-    private addBuddleButton.OnClickListener addThingToList =
-            new addBuddleButton.OnclickListener(){
+    /*private btnAdd.OnClickListener addThingToList =
+            new btnAdd.OnclickListener(){
             @Override
                 public void onClick( View  v ){
                     addBuddleButtonHasBeenClicked = true;
@@ -53,19 +87,24 @@ public class MainActivity extends AppCompatActivity {
                     startActivity( intent );
                 }
             }
+     */
+
+
+
+
     private void findViews(){
         //建立listener
         //類別偵聽器
         //onItemLongClick未完成
         //onClicker未完成
     }
-    public void UpdateListView(Cursor memocursor){
+    /*public void UpdateListView(Cursor memocursor){
         MyAdapter adapter = new MyAdapter(memocursor);
         adapter.notifyDataSetChanged();
         lstView.setAdapter(adapter);
         cursor = memocursor;
-    }
-    public class MyaAdapter extends BaseAdapter{
+    }*/
+    /*public class MyaAdapter extends BaseAdapter{
         private Cursor cursor;
         public MyaAdapter(Cursor cursor){
             this.cursor=cursor;
@@ -93,9 +132,7 @@ public class MainActivity extends AppCompatActivity {
             return getview;
         }
 
-    }
-
-    @Override
+    }*/
 
 
     public void add_bubble_clicked(View view) {
