@@ -15,12 +15,13 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Intent;
 
 public class addThingPage extends AppCompatActivity {
-    private Button memo_added_button;
+    private ImageButton memo_added_button;
     private EditText type_memo;
     public Integer cnt=0;
     SharedPreferences thingsToDo = getSharedPreferences("toDoList", MODE_PRIVATE);
@@ -29,7 +30,7 @@ public class addThingPage extends AppCompatActivity {
         super.onCreate( saveInstanceState );
         setContentView( R.layout.pop_up_memo_added );
         type_memo = ( EditText )findViewById( R.id.type_memo );
-        memo_added_button = ( Button )findViewById( R.id.memo_added_button );
+        memo_added_button = (ImageButton )findViewById( R.id.memo_added_button );
         memo_added_button.setOnClickListener( addThingToTheList );
     }
 
@@ -44,7 +45,7 @@ public class addThingPage extends AppCompatActivity {
                 }
                 else{
                     thingsToDo.edit()
-                            .putString( cnt , thingThatAddedNow )
+                            .putString( cnt.toString() , thingThatAddedNow )
                             .apply();
                     Toast thingHasBeenAdded = Toast.makeText( addThingPage.this , "您輸入的事項已被新增!" , Toast.LENGTH_SHORT );
                     thingHasBeenAdded.show();
