@@ -3,7 +3,7 @@ package com.example.susa_boba_project.memo_database;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "MemoDB")
+@Entity(tableName = "Memo")
 public class MyData {
     @PrimaryKey(autoGenerate = true)
     private int id;

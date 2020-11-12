@@ -10,11 +10,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.susa_boba_project.memo_database.DataBase;
+import com.example.susa_boba_project.memo_database.MemoDataBase;
 import com.example.susa_boba_project.memo_database.MyData;
+import com.facebook.stetho.Stetho;
 import com.google.android.material.textfield.TextInputEditText;
-
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
    private Button btnappend,btnUpdate,btnSelect;
@@ -31,12 +30,26 @@ public class MainActivity extends AppCompatActivity {
 
         /*ArrayList<Memo> data = new ArrayList<>();
         data.add(new Memo("Marshmallow"));//test
-        data.add(new Memo("Lollipop"));//test*/
-        List<MyData> data = DataBase.getInstance(this).getDataUao().displayAll();
-        bubbles_recyclerview_adapter adapter = new bubbles_recyclerview_adapter(this, data);
+        data.add(new Memo("Lollipop"));//test
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+                MyData[] data=MemoDataBase.getInstance(getApplicationContext()).getDataDao().loadAllContent();
+            }
+        });*/
+        new Thread(() -> {
+            MyData[] data= MemoDataBase.getInstance(getApplicationContext()).getDataDao().loadAllContent();
+                runOnUiThread(() -> {
+                    bubbles_recyclerview_adapter adapter = new bubbles_recyclerview_adapter(this, data);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(this));
+                    recyclerView.setAdapter(adapter);
+                });
+        }).start();
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapter);
+        //List<MyData> data = Arrays.asList(MemoDataBase.getInstance(this).getDataDao().loadAllContent());
+
+
+
         //recyclerview end
     }
 

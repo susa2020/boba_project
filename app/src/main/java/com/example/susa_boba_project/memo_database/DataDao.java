@@ -17,7 +17,7 @@ public interface DataDao {
     @Delete
     public void DeleteMemo(MyData... content);
 
-    @Query("SELECT * FROM content")
+    @Query("SELECT * FROM Memo")
     public MyData[] loadAllContent();
 
 

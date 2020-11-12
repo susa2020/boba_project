@@ -24,9 +24,13 @@ public class bubbles_recyclerview_adapter extends RecyclerView.Adapter<bubbles_r
     private Activity activity;
     private OnItemClickListener onItemClickListener;
 
-    public bubbles_recyclerview_adapter(Activity activity, List<MyData> myData) {
+    /*public bubbles_recyclerview_adapter(Activity activity, List<MyData> myData) {
         this.activity = activity;
         this.myData = myData;
+    }*/
+    public bubbles_recyclerview_adapter(Activity activity, MyData[] myData) {
+        this.activity = activity;
+        this.myData = Arrays.asList(myData);
     }
     /**建立對外接口*/
     public void setOnItemClickListener(OnItemClickListener onItemClickListener){
