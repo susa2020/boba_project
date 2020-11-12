@@ -1,7 +1,6 @@
 package com.example.susa_boba_project;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,9 +10,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.susa_boba_project.memo_database.DataBase;
+import com.example.susa_boba_project.memo_database.MyData;
 import com.google.android.material.textfield.TextInputEditText;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
    private Button btnappend,btnUpdate,btnSelect;
@@ -24,13 +25,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         // UpdateListView(cursor);
         //recrclerview start
+        Stetho.initializeWithDefaults(this);//設置資料庫監視
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.bubbles_recyclerView);
 
-        ArrayList<Memo> data = new ArrayList<>();
+        /*ArrayList<Memo> data = new ArrayList<>();
         data.add(new Memo("Marshmallow"));//test
-        data.add(new Memo("Lollipop"));//test
-
+        data.add(new Memo("Lollipop"));//test*/
+        List<MyData> data = DataBase.getInstance(this).getDataUao().displayAll();
         bubbles_recyclerview_adapter adapter = new bubbles_recyclerview_adapter(this, data);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

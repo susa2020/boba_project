@@ -9,9 +9,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.susa_boba_project.memo_database.DataBase;
+import com.example.susa_boba_project.memo_database.MemoDataBase;
 import com.example.susa_boba_project.memo_database.MyData;
 
+import java.util.Arrays;
 import java.util.List;
 
 //import com.bumptech.glide.Glide;
@@ -44,23 +45,23 @@ public class bubbles_recyclerview_adapter extends RecyclerView.Adapter<bubbles_r
     /**更新資料*/
     public void refreshView() {
         new Thread(()->{
-            List<MyData> data = DataBase.getInstance(activity).getDataUao().displayAll();
+            List<MyData> data = Arrays.asList(MemoDataBase.getInstance(activity).getDataDao().loadAllContent());
             this.myData = data;
             activity.runOnUiThread(() -> {
                 notifyDataSetChanged();
             });
         }).start();
     }
-    /**刪除資料*/
+    /**刪除資料
     public void deleteData(int position){
         new Thread(()->{
-            DataBase.getInstance(activity).getDataUao().deleteData(myData.get(position).getId());
+            MemoDataBase.getInstance(activity).getDataDao().deleteData(myData.get(position).getId());
             activity.runOnUiThread(()->{
                 notifyItemRemoved(position);
                 refreshView();
             });
         }).start();
-    }
+    }*/
 
     @NonNull
     @Override
@@ -72,7 +73,7 @@ public class bubbles_recyclerview_adapter extends RecyclerView.Adapter<bubbles_r
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.tvMemoContent.setText(myData.get(position).getName());
+        holder.tvMemoContent.setText(myData.get(position).getContent());
         holder.view.setOnClickListener((v)->{
             onItemClickListener.onItemClick(myData.get(position));
         });
