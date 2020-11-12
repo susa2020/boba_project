@@ -46,6 +46,18 @@ public class MainActivity extends AppCompatActivity {
                 });
         }).start();
 
+        new Thread(() -> {
+            MyData memo=new MyData();
+            memo.setContent("aaaaa");
+            MemoDataBase.getInstance(getApplicationContext()).getDataDao().insertMemo(memo);
+            MyData[] data= MemoDataBase.getInstance(getApplicationContext()).getDataDao().loadAllContent();
+            runOnUiThread(() -> {
+                bubbles_recyclerview_adapter adapter = new bubbles_recyclerview_adapter(this, data);
+                recyclerView.setLayoutManager(new LinearLayoutManager(this));
+                recyclerView.setAdapter(adapter);
+            });
+        }).start();
+
         //List<MyData> data = Arrays.asList(MemoDataBase.getInstance(this).getDataDao().loadAllContent());
 
 
