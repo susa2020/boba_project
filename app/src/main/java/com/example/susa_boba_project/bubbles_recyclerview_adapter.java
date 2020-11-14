@@ -42,7 +42,7 @@ public class bubbles_recyclerview_adapter extends RecyclerView.Adapter<bubbles_r
         View view;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvMemoContent = itemView.findViewById(android.R.id.text1);
+            tvMemoContent = itemView.findViewById(R.id.memo_content);
             view = itemView;
         }
     }
@@ -71,7 +71,7 @@ public class bubbles_recyclerview_adapter extends RecyclerView.Adapter<bubbles_r
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(android.R.layout.simple_list_item_1, null);
+                .inflate(R.layout.bubbles, parent, false);
         return new ViewHolder(view);
     }
 
