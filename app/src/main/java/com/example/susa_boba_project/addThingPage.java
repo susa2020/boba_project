@@ -1,24 +1,15 @@
 package com.example.susa_boba_project;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.annotation.SuppressLint;
-import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.database.SQLException;
-import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Canvas;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
-import android.content.Intent;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class addThingPage extends AppCompatActivity {
     private ImageButton memo_added_button;
@@ -54,5 +45,11 @@ public class addThingPage extends AppCompatActivity {
                     startActivity( intent );
                 }
             }
-        };
+    };
+
+
+    public void showAtLocation(View parent, int gravity, int x, int y) {
+        showAtLocation((View) parent.getWindowToken(), gravity, x, y);
+    }
+
 }

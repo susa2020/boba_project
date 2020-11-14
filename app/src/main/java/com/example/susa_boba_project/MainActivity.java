@@ -1,9 +1,16 @@
 package com.example.susa_boba_project;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.PopupWindow;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,9 +22,12 @@ import com.example.susa_boba_project.memo_database.MyData;
 import com.facebook.stetho.Stetho;
 import com.google.android.material.textfield.TextInputEditText;
 
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
+
 public class MainActivity extends AppCompatActivity {
    private Button btnappend,btnUpdate,btnSelect;
    private TextInputEditText edtId,edtContent;
+    private Context mContext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,15 +38,6 @@ public class MainActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.bubbles_recyclerView);
 
-        /*ArrayList<Memo> data = new ArrayList<>();
-        data.add(new Memo("Marshmallow"));//test
-        data.add(new Memo("Lollipop"));//test
-        AsyncTask.execute(new Runnable() {
-            @Override
-            public void run() {
-                MyData[] data=MemoDataBase.getInstance(getApplicationContext()).getDataDao().loadAllContent();
-            }
-        });*/
         new Thread(() -> {
             MyData[] data= MemoDataBase.getInstance(getApplicationContext()).getDataDao().loadAllContent();
                 runOnUiThread(() -> {
@@ -68,8 +69,10 @@ public class MainActivity extends AppCompatActivity {
     public void add_bubble_clicked(View view) {
         Toast toast = Toast.makeText(this, "新增按鈕已經被點擊", Toast.LENGTH_SHORT);
         toast.show();
-
+        initPopWindow(view);
     }
+
+
     public void edit_button_clicked(View view) {
         Toast toast = Toast.makeText(this, "編輯按鈕已經被點擊", Toast.LENGTH_SHORT);
         toast.show();
@@ -82,4 +85,28 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void initPopWindow(View v) {
+        LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View contentview = inflater.inflate(R.layout.pop_up_memo_added, null);
+        contentview.setFocusable(true); // 这个很重要
+        contentview.setFocusableInTouchMode(true);
+        final PopupWindow popupWindow = new PopupWindow(contentview, WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        popupWindow.setFocusable(true);
+        popupWindow.setOutsideTouchable(false);
+        popupWindow.setBackgroundDrawable(new ColorDrawable(0x00000000));    //要为popWindow设置一个背景才有效
+        contentview.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_BACK) {
+                    popupWindow.dismiss();
+
+                    return true;
+                }
+                return false;
+            }
+        });
+        popupWindow.showAtLocation(v,  Gravity.BOTTOM, 0, 0);
+
+
+    }
 }
